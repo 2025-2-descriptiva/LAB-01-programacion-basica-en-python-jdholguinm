@@ -14,8 +14,8 @@ def pregunta_01():
 
     """
     total = 0
-    # with open(r"D:\Ensayos Python\files\data.csv", "r", encoding="utf-8") as data:
-    with open (r"files/data.csv", "r", encoding="utf-8") as data:
+    with open(r"D:\Ensayos Python\files\data.csv", "r", encoding="utf-8") as data:
+    # with open(r"files/data.csv", "r", encoding="utf-8") as data:
         for fila in data:
             columna = fila.strip().split("\t")
             total += int(columna[1])
