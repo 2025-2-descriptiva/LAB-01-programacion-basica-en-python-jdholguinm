@@ -26,3 +26,21 @@ def pregunta_04():
      ('12', 3)]
 
     """
+    from collections import Counter
+    
+    fechas = []
+    with open(r"files/input/data.csv", "r", encoding="utf-8") as data:
+        for linea in data:
+            lista = linea.strip().split("\t")
+            fechas.append(lista[2].split("-")[1])   
+
+    resultado = sorted(Counter(fechas).items())
+
+
+    return resultado
+
+# resultado = pregunta_04()
+# print(resultado)
+
+if __name__ == "__main__":
+    print(pregunta_04())

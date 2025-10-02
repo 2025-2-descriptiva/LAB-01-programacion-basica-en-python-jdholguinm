@@ -13,5 +13,18 @@ def pregunta_02():
 
     Rta/
     [('A', 8), ('B', 7), ('C', 5), ('D', 6), ('E', 14)]
-
     """
+    
+    from collections import Counter
+
+    letra = []
+    with open(r"files/input/data.csv", "r", encoding="utf-8") as data:
+        for linea in data:
+            letra.append(linea[0])
+    return sorted(Counter(letra).items())
+
+# resultado = pregunta_02()
+# print(resultado)
+
+if __name__ == "__main__":
+    print(pregunta_02())
