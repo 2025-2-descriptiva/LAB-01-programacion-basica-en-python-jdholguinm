@@ -26,3 +26,40 @@ def pregunta_06():
      ('jjj', 5, 17)]
 
     """
+
+    matriz = []
+    with open(r"files/input/data.csv", "r", encoding="utf-8") as data:
+        for fila in data:
+            columnas = fila.strip().split("\t")
+            matriz.append(columnas)
+    
+    # Diccionario final: clave -> lista de valores
+    diccionario = {}
+
+    # Recorremos cada fila
+    for fila in matriz:
+        pares = fila[4].split(",")  # columna 4 tiene los pares clave:valor
+
+        for par in pares:
+            clave, valor = par.split(":")
+            valor = int(valor)
+
+            # Crear y agregar el valor a la lista de esa clave
+            if clave not in diccionario:
+                diccionario[clave] = [valor]
+            else:
+                diccionario[clave].append(valor)
+    
+    diccionario = dict(sorted(diccionario.items()))
+     # Convertir las listas de valores en tuplas (min, max)
+    diccionario = {k: (min(v), max(v)) for k, v in diccionario.items()}
+    resultado = list((k, v[0], v[1]) for k, v in diccionario.items())   
+
+    # return diccionario
+    return resultado
+
+if __name__ == "__main__":
+    print(pregunta_06())
+
+# for fila in pregunta_06():
+#     print(fila)
