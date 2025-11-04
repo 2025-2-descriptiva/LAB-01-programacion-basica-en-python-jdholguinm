@@ -24,3 +24,22 @@ def pregunta_09():
      'jjj': 18}}
 
     """
+    resultado = {}
+
+    with open("files/input/data.csv", "r", encoding="utf-8") as data:
+        for linea in data:
+            columnas = linea.strip().split("\t")
+            col_4 = columnas[4]
+            pares = col_4.split(",")       # Estamos separando los pares clave:valor de cada fila
+
+            for par in pares:
+                clave = par.split(":")[0]  # tomamos solo la clave
+
+                if clave not in resultado:
+                    resultado[clave] = 0
+                resultado[clave] += 1    # Contador de las veces que aparece
+
+    return dict(sorted(resultado.items()))
+
+if __name__ == "__main__":
+    print(pregunta_09())

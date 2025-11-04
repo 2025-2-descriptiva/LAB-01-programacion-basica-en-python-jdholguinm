@@ -20,3 +20,25 @@ def pregunta_10():
 
 
     """
+
+    resultado = []
+
+    with open("files/input/data.csv", "r", encoding="utf-8") as data:
+        for linea in data:
+            columnas = linea.strip().split("\t")
+
+            col_0 = columnas[0]
+            col_3 = columnas[3]
+            col_4 = columnas[4]
+
+            # Contar los elementos separados por coma
+            num_col3 = len(col_3.split(","))
+            num_col4 = len(col_4.split(","))
+
+            # Crear la tupla
+            resultado.append((col_0, num_col3, num_col4))
+
+    return resultado
+
+if __name__ == "__main__":
+    print(pregunta_10())

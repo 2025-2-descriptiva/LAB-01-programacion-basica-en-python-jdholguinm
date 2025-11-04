@@ -25,3 +25,22 @@ def pregunta_07():
      (9, ['A', 'B', 'E', 'A', 'A', 'C'])]
 
     """
+
+    resultado = {}
+
+    with open(r"files/input/data.csv", "r", encoding="utf-8") as data:
+        for linea in data:
+            columnas = linea.strip().split("\t")
+            col_0 = columnas[0]  # letra
+            col_1 = int(columnas[1])  # número
+
+            if col_1 not in resultado:
+                resultado[col_1] = []
+            resultado[col_1].append(col_0)
+
+    # Convertimos a lista de tuplas y ordenamos por col_1
+    return sorted(resultado.items())
+
+
+if __name__ == "__main__":
+    print(pregunta_07())
